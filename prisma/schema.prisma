@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Rating {
+  id String @id @default(uuid())
+  stars Int 
+  tutor String @default("Ana")
+
+  @@map("rating")
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+}
